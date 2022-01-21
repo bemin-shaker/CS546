@@ -7,9 +7,7 @@ const questionOne = function questionOne(arr) {
   return total;
 };
 
-const questionTwo = function questionTwo(num) {
-  // Implement question 2 here
-};
+const questionTwo = function questionTwo(num) {};
 
 const questionThree = function questionThree(text) {
   let counter = 0;
