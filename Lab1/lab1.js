@@ -1,4 +1,5 @@
 // I pledge my honor that I have abided by the Stevens Honor System. - Bemin Shaker
+
 const questionOne = function questionOne(arr) {
   let total = 0;
   arr.forEach((value) => {
@@ -7,7 +8,14 @@ const questionOne = function questionOne(arr) {
   return total;
 };
 
-const questionTwo = function questionTwo(num) {};
+const questionTwo = function questionTwo(num) {
+  if (num < 1) {
+    return 0;
+  } else if (num == 1) {
+    return 1;
+  } else {
+  }
+};
 
 const questionThree = function questionThree(text) {
   let counter = 0;
