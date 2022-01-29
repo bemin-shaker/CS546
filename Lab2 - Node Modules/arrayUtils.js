@@ -19,6 +19,19 @@ function checkArrayElement(value) {
   }
 }
 
+//Checks if the given parameter value exists, is a number type, and is a postive number
+function checkParam(end) {
+  if (!end) {
+    throw "Error: End param not supplied or undefined";
+  }
+  if (typeof end !== "number") {
+    throw "Error: Param must of proper type (a number)";
+  }
+  if (end <= 0) {
+    throw "Error: Param must be a positive number greater than 0";
+  }
+}
+
 //Returns the mean value of the elements of an array
 const mean = (array) => {
   let sum = 0;
@@ -33,6 +46,19 @@ const mean = (array) => {
 //Returns the median value of the elements of an array squared
 const medianSquared = (array) => {
   checkArray(array);
+  array.forEach((value) => {
+    checkArrayElement(value);
+  });
+  let size = array.length;
+
+  array.sort();
+
+  let oddMedian = array[Math.floor(size / 2)];
+  let evenMedian =
+    (array[Math.floor(size / 2) - 1] + array[Math.floor(size / 2)]) / 2;
+
+  if (size % 2 != 0) return oddMedian ** 2;
+  return evenMedian ** 2;
 };
 
 //Scans the array from one end to the other to find the largest element
@@ -57,7 +83,19 @@ function maxElement(array) {
 }
 
 //Creates a new numbered array starting at 0 increasing by one up to, but not including the end argument
-function fill(end, value) {}
+//If the value argument is provided, each element in the array will be set to that value
+function fill(end, value) {
+  checkParam(end);
+  let array = [];
+  for (let i = 0; i < end; i++) {
+    if (value) {
+      array[i] = value;
+    } else {
+      array[i] = i;
+    }
+  }
+  return array;
+}
 
 //Return an object with the count of each element that is repeating in the array
 const countRepeating = (array) => {};
