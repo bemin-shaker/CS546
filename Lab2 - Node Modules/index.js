@@ -3,7 +3,7 @@ const stringUtils = require("./stringUtils");
 const objUtils = require("./objUtils");
 
 //console.log(arrayUtils.mean([1, 2, 3]));
-console.log(stringUtils.camelCase(123));
+console.log(stringUtils.replaceChar("daddy"));
 
 // Mean Tests
 try {

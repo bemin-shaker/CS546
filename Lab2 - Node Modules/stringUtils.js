@@ -31,9 +31,22 @@ function camelCase(string) {
   return newString;
 }
 
-function replaceChar(string) {}
+function replaceChar(string) {
+  checkString(string);
+  let newString = "";
+  newString += string[0];
+  for (let i = 1; i < string.length; i++) {
+    if (string[i] == string[0]) {
+      newString += "*";
+    } else {
+      newString += string[i];
+    }
+  }
+  return newString;
+}
 
 function mashUp(string1, string2) {}
+
 module.exports = {
   camelCase,
   replaceChar,
