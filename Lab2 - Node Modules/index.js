@@ -2,8 +2,11 @@ const arrayUtils = require("./arrayUtils");
 const stringUtils = require("./stringUtils");
 const objUtils = require("./objUtils");
 
-//console.log(arrayUtils.mean([1, 2, 3]));
-console.log(stringUtils.replaceChar("daddy"));
+const first = { x: 2, y: 3 };
+const second = { a: 70, x: 4, z: 5 };
+const third = { x: 0, y: 9, q: 10 };
+
+console.log(objUtils.makeArrays([second, third]));
 
 // Mean Tests
 try {
