@@ -120,6 +120,23 @@ function fill(end, value) {
 //Return an object with the count of each element that is repeating in the array
 const countRepeating = (array) => {
   checkArray3(array);
+  let counter = {};
+  let repeatingOnly = {};
+  for (let i = 0; i < array.length; i++) {
+    if (counter[array[i]]) {
+      counter[array[i]] += 1;
+    } else {
+      counter[[array[i]]] = 1;
+    }
+  }
+  //removes elements that only appear once in the array
+  for (let val in counter) {
+    if (counter[val] >= 2) {
+      repeatingOnly[val] = counter[val];
+    }
+  }
+
+  return repeatingOnly;
 };
 
 //Checks if two given arrays are equal in terms of size, then check elements to determine if they're equal

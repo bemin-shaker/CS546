@@ -2,7 +2,7 @@ const arrayUtils = require("./arrayUtils");
 const stringUtils = require("./stringUtils");
 const objUtils = require("./objUtils");
 
-console.log(stringUtils.mashUp("hello", "world"));
+//console.log(stringUtils.mashUp("hello", "world"));
 
 // Mean Tests
 try {
