@@ -12,6 +12,26 @@ function checkArray(array) {
   }
 }
 
+//Check that the arrays exist and that each array is of proper type
+function checkArray2(array1, array2) {
+  if (!array1 || !array2) {
+    throw "Error: One or both inputs not supplied or undefined";
+  }
+  if (!Array.isArray(array1) || !Array.isArray(array2)) {
+    throw "Error: Inputs must an array type";
+  }
+}
+
+//Check that the arrays exist and that each array is of proper type
+function checkArray3(array) {
+  if (!array) {
+    throw "Error: Input string not supplied or undefined";
+  }
+  if (!Array.isArray(array)) {
+    throw "Error: Input must an array type";
+  }
+}
+
 //Checks if the given array element value is a number
 function checkArrayElement(value) {
   if (typeof value !== "number") {
@@ -98,10 +118,33 @@ function fill(end, value) {
 }
 
 //Return an object with the count of each element that is repeating in the array
-const countRepeating = (array) => {};
+const countRepeating = (array) => {
+  checkArray3(array);
+};
 
-//Checks if two given arrays are equal in terms of size
-const isEqual = (arrayOne, arrayTwo) => {};
+//Checks if two given arrays are equal in terms of size, then check elements to determine if they're equal
+const isEqual = (arrayOne, arrayTwo) => {
+  checkArray2(arrayOne, arrayTwo);
+
+  if (arrayOne.length !== arrayTwo.length) {
+    return false;
+  }
+  arrayOne.sort();
+  arrayTwo.sort();
+
+  for (let i = 0; i < arrayOne.length; i++) {
+    arrayOne[i].sort();
+    arrayTwo[i].sort();
+  }
+
+  for (let i = 0; i < arrayOne.length; i++) {
+    if (arrayOne[i] !== arrayTwo[i]) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+};
 
 module.exports = {
   mean,

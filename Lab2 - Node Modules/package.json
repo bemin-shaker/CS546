@@ -4,7 +4,6 @@
   "description": "Lab2",
   "main": "index.js",
   "scripts": {
-    "seed": "node ./tasks/seed.js",
     "test": "node test.js",
     "start": "node index.js"
   },

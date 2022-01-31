@@ -2,59 +2,60 @@ const arrayUtils = require("./arrayUtils");
 const stringUtils = require("./stringUtils");
 const objUtils = require("./objUtils");
 
-const first = { x: 2, y: 3 };
-const second = { a: 70, x: 4, z: 5 };
-const third = { x: 0, y: 9, q: 10 };
-
-console.log(objUtils.makeArrays([second, third]));
+console.log(stringUtils.mashUp("hello", "world"));
 
 // Mean Tests
 try {
   // Should Pass
-  const meanOne = mean([2, 3, 4, 5]);
-  console.log("mean passed successfully");
+  console.log(arrayUtils.mean([2, 3, 4, 5]));
 } catch (e) {
-  console.error("mean failed test case");
+  console.log(e);
 }
-
 try {
-  // Should Fail
-  const meanTwo = mean("Hello World");
-  console.error("mean did not error");
+  // Should fail
+  console.log(arrayUtils.mean("Hello World"));
 } catch (e) {
-  console.log("mean failed successfully");
+  console.log(e);
 }
 
-// Median Squared Tests
+// Median Tests
 try {
   // Should Pass
-  const medianOne = medianSquared([8, 3, 4, 5]);
-  console.log("mean passed successfully");
+  console.log(arrayUtils.medianSquared([8, 3, 4, 5]));
 } catch (e) {
-  console.error("mean failed test case");
+  console.log(e);
+}
+try {
+  // Should fail
+  console.log(arrayUtils.medianSquared("This is a string"));
+} catch (e) {
+  console.log(e);
 }
 
+// Max Element Tests
 try {
-  // Should Fail
-  const medianTwo = medianSquared("This is string");
-  console.error("mean did not error");
+  // Should Pass
+  console.log(arrayUtils.maxElement([1, 13, 4, 500]));
 } catch (e) {
-  console.log("mean failed successfully");
+  console.log(e);
+}
+try {
+  // Should fail
+  console.log(arrayUtils.maxElement("1"));
+} catch (e) {
+  console.log(e);
 }
 
 // Fill Tests
 try {
   // Should Pass
-  const fillOne = fill(6);
-  console.log("fill passed successfully");
+  console.log(arrayUtils.fill(6));
 } catch (e) {
-  console.error("fill failed test case");
+  console.log(e);
 }
-
 try {
-  // Should Fail
-  const fillTwo = fill(-4);
-  console.error("fill did not error");
+  // Should fail
+  console.log(arrayUtils.fill(-4));
 } catch (e) {
-  console.log("fill failed successfully");
+  console.log(e);
 }
