@@ -22,15 +22,77 @@ function checkArray(array) {
   }
 }
 
+//Checks that input objects exist and are of proper object type
+function checkObjects(obj1, obj2) {
+  if (!obj1 || !obj2) {
+    throw "Error: Inputs not supplied or undefined";
+  }
+  if (typeof obj1 !== "object" || typeof obj2 !== "object") {
+    throw "Error: Inputs must be of proper type of object)";
+  }
+}
+
+//Checks that the input object exists and is of proper object type
+function checkObject(obj) {
+  if (!obj) {
+    throw "Error: Input not supplied or undefined";
+  }
+  if (typeof obj !== "object") {
+    throw "Error: Input must be of proper type of object)";
+  }
+}
+
+//Checks that the input function exists and is of proper function type
+function checkFunction(func) {
+  if (!func) {
+    throw "Error: Input not supplied or undefined";
+  }
+  if (typeof func !== "function") {
+    throw "Error: Input must be of proper type of function";
+  }
+}
+
+//Take in an array of objects and returns an array of arrays where an array of each key and value is an element in the array
 function makeArrays(objects) {
   checkArray(objects);
   let array = objects.map((obj) => Object.entries(obj));
-  return array;
+
+  return array.flat();
 }
 
-function isDeepEqual(obj1, obj2) {}
+//Checks each field (at every level deep) in obj1 and obj2 for equality
+//It will return true if each field is equal, and false if not
+function isDeepEqual(obj1, obj2) {
+  checkObjects(obj1, obj2);
 
-function computeObject(object, func) {}
+  if (Object.keys(obj1).length !== Object.keys(obj2).length) {
+    return false;
+  }
+
+  for (let key of Object.keys(obj1)) {
+    if (obj1[key] !== obj2[key]) {
+      return false;
+    }
+  }
+
+  return true;
+}
+
+//Evaluates the given function on the values of the object and returnz a new object with the results
+function computeObject(object, func) {
+  checkObject(object);
+  checkFunction(func);
+
+  let newObject = {};
+
+  for (const property in object) {
+    if (typeof object[property] !== "number") {
+      throw "Error: object values must be a number";
+    }
+    newObject[property] = func.call(this, object[property]);
+  }
+  return newObject;
+}
 
 module.exports = {
   makeArrays,

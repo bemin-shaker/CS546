@@ -126,7 +126,7 @@ const countRepeating = (array) => {
     if (counter[array[i]]) {
       counter[array[i]] += 1;
     } else {
-      counter[[array[i]]] = 1;
+      counter[array[i]] = 1;
     }
   }
   //removes elements that only appear once in the array
@@ -146,21 +146,22 @@ const isEqual = (arrayOne, arrayTwo) => {
   if (arrayOne.length !== arrayTwo.length) {
     return false;
   }
-  arrayOne.sort();
-  arrayTwo.sort();
+  arrayOne.sort().toString();
+  arrayTwo.sort().toString();
 
   for (let i = 0; i < arrayOne.length; i++) {
-    arrayOne[i].sort();
-    arrayTwo[i].sort();
+    if (Array.isArray(arrayOne[i])) {
+      arrayOne[i].sort();
+      arrayTwo[i].sort();
+    }
   }
-
   for (let i = 0; i < arrayOne.length; i++) {
     if (arrayOne[i] !== arrayTwo[i]) {
       return false;
-    } else {
-      return true;
     }
   }
+
+  return true;
 };
 
 module.exports = {

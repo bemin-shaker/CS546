@@ -26,18 +26,19 @@ function checkString2(string1, string2) {
 
 //Returns a camel case version of the input string
 function camelCase(string) {
-  checkString(string);
+  let str = string.trim();
+  checkString(str);
   let newString = "";
-  for (let i = 0; i < string.length; i++) {
-    if (string[i] == " ") {
-      newString += string[i + 1].toUpperCase();
+  for (let i = 0; i < str.length; i++) {
+    if (str[i] == " ") {
+      newString += str[i + 1].toUpperCase();
       i++;
     } else {
       if (i == 0) {
-        newString += string[i].toLowerCase();
+        newString += str[i].toLowerCase();
         i++;
       }
-      newString += string[i].toLowerCase();
+      newString += str[i].toLowerCase();
     }
   }
 
