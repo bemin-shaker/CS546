@@ -8,8 +8,10 @@ async function main() {
   //     console.log(e);
   //   }
 
-  //console.log(await people.getPersonById(1));
-  console.log(people.sameEmail("hel.lo"));
+  // console.log(
+  //   await people.getPersonById("1380f2af-e0d8-4231-a9e7-f09650afc0bb")
+  // );
+  console.log(await people.sameEmail("harvard.edu"));
 }
 
 main();

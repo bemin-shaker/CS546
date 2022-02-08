@@ -36,6 +36,13 @@ function checkEmail(emailDomain) {
   if (!emailDomain.includes(".")) {
     throw "Error: Email domain parameter must contain a dot";
   }
+  let count = 0;
+  for (let i = emailDomain.lastIndexOf(".") + 1; i < emailDomain.length; i++) {
+    count++;
+  }
+  if (count < 2) {
+    throw "Error: Parameter must contain at least 2 letters after the last dot in the email domain";
+  }
 }
 
 //Returns the person for the specified id within the people.json array
@@ -54,8 +61,19 @@ async function getPersonById(id) {
 }
 
 //Returns an array of people objects who have the same email address domain from people.json
-function sameEmail(emailDomain) {
+async function sameEmail(emailDomain) {
   checkEmail(emailDomain);
+  let data = await getPeople();
+
+  var result = data.filter((obj) => {
+    return obj.email.includes(emailDomain);
+  });
+
+  if (result.length < 2) {
+    throw "Error: There aren't at least two people that have the same email domain provided";
+  }
+
+  return result;
 }
 
 function manipulateIp() {}
