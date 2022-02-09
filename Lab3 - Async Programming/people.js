@@ -127,14 +127,51 @@ async function manipulateIp() {
   let data = await getPeople();
 
   data.map((val) => {
-    newArray.push(
-      parseInt(
-        val.ip_address.replace(".", "").replace(".", "").replace(".", "")
-      ).sort()
+    let parsedVal = parseInt(
+      val.ip_address.replace(".", "").replace(".", "").replace(".", "")
     );
+    let array = Array.from(parsedVal.toString()).map(Number);
+
+    let sortedIP = Number(array.sort().join(""));
+    newArray.push({
+      ip: sortedIP,
+      firstName: `${val.first_name}`,
+      lastName: `${val.last_name}`,
+    });
   });
 
-  return newArray;
+  let maxResult = Math.max.apply(
+    Math,
+    newArray.map(function (obj) {
+      return obj.ip;
+    })
+  );
+  let minResult = Math.min.apply(
+    Math,
+    newArray.map(function (obj) {
+      return obj.ip;
+    })
+  );
+
+  let avgResult = Math.floor.apply(
+    Math,
+    newArray.map(function (obj) {
+      return obj.ip;
+    })
+  );
+
+  let maxObj = newArray.find(function (obj) {
+    return obj.ip == maxResult;
+  });
+
+  let minObj = newArray.find(function (obj) {
+    return obj.ip == minResult;
+  });
+
+  newArray.forEach((object) => {
+    delete object["ip"];
+  });
+  return { highest: maxObj, lowest: minObj, average: avgResult };
 }
 
 //Returns an array of strings with all the people with birthdays the same as the given month and day parameter
@@ -152,6 +189,7 @@ async function sameBirthday(month, day) {
 }
 
 module.exports = {
+  getPeople,
   getPersonById,
   sameEmail,
   manipulateIp,
