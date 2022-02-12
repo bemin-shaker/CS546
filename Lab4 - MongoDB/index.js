@@ -1,1 +1,1 @@
-const bands = require("./bands");
+const bands = require("./data/bands");
