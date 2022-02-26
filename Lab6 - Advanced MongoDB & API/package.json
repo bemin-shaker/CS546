@@ -1,0 +1,15 @@
+{
+  "name": "lab6",
+  "version": "1.0.0",
+  "description": "Lab 6",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Bemin Shaker 10445235",
+  "license": "ISC",
+  "dependencies": {
+    "mongodb": "^4.4.0"
+  }
+}
