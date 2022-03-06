@@ -275,6 +275,7 @@ async function update(
 }
 
 module.exports = {
+  checkIdParam,
   create,
   getAll,
   get,

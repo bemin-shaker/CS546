@@ -168,9 +168,13 @@ async function get(albumId) {
     throw "Error: album not found";
   }
 
-  return bandCollection.find({
-    albums: { $elemMatch: { _id: ObjectId(albumId) } },
-  });
+  const result = bandCollection
+    .find({
+      albums: { $elemMatch: { _id: ObjectId(albumId) } },
+    })
+    .toArray();
+
+  return result;
 }
 
 async function remove(albumId) {
@@ -182,10 +186,15 @@ async function remove(albumId) {
   if (!album) {
     throw "Error: album not found";
   }
+
+  let id = album._id.toString();
+
   const resultData = await bandCollection.updateOne(
     { _id: album._id },
     { $pull: { albums: { _id: ObjectId(albumId) } } }
   );
+
+  return bandsData.get(id);
 }
 
 module.exports = {
