@@ -1,0 +1,56 @@
+<main>
+    <article>
+        <h1>{{title}}</h1>
+        {{#if show.image.medium}}
+        <img src={{show.image.medium}}>
+        {{else}}
+        <img
+            src="https://media.istockphoto.com/vectors/no-image-available-sign-vector-id922962354?k=20&m=922962354&s=612x612&w=0&h=f-9tPXlFXtz9vg_-WonCXKCdBuPUevOBkp3DQ-i0xqo=">
+        {{/if}}
+
+        <dl>
+            <dt>Languge</dt>
+            {{#if show.language}}
+            <dd>{{show.language}}</dd>
+            {{else}}
+            <dd>N/A</dd>
+            {{/if}}
+
+            <dt>Genres</dt>
+            <dd>
+                <ul>
+                    {{#each show.genres}}
+                    <li>
+                        {{this}}
+                    </li>
+                    {{/each}}
+                </ul>
+            </dd>
+
+            <dt>Average Rating</dt>
+
+            {{#if show.rating.average}}
+            <dd>{{show.rating.average}}</dd>
+            {{else}}
+            <dd>N/A</dd>
+            {{/if}}
+
+
+            <dt>Network</dt>
+            {{#if show.network.name}}
+            <dd>{{show.network.name}}</dd>
+            {{else}}
+            <dd>N/A</dd>
+            {{/if}}
+
+            <dt>Summary</dt>
+            {{#if sum}}
+            <dd>{{sum}}</dd>
+            {{else}}
+            <dd>N/A</dd>
+            {{/if}}
+        </dl>
+
+    </article>
+
+</main>

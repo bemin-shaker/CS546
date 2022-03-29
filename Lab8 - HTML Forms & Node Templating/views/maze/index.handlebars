@@ -1,0 +1,12 @@
+<main>
+    <h1>{{title}}</h1>
+    <article>
+        <p>This site contains a form that allows you to search through the TV Maze API for show data.
+            Once you find the show you're looking for, you can view the page showing the details of that show. </p>
+        <form action="/searchShows" method="post">
+            <label for="searchTerm">Search:</label>
+            <input type="text" name="showSearchTerm" id="searchTerm">
+            <button type="submit" id="searchTermId">Search</button>
+        </form>
+    </article>
+</main>
