@@ -62,7 +62,17 @@ router.get("/show/:id", async (req, res) => {
         .replace("<p>", "")
         .replace("</p>", "")
         .replace("<b>", "")
-        .replace("</b>", ""),
+        .replace("</b>", "")
+        .replace("<span>", "")
+        .replace("</span>", "")
+        .replace("<p >", "")
+        .replace("< /p>", "")
+        .replace("<span >", "")
+        .replace("< /span>", "")
+        .replace("<p><span>", "")
+        .replace("</span></p>", "")
+        .replace("<br/>", "")
+        .replace("<br />", ""),
     });
   } catch (e) {
     res.status(404).render("maze/error", {
